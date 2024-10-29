@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>College Day Celebration 2024</title>
+    <style>
+       
+        
+        :root {
+            --primary-color: #4a90e2;
+            --secondary-color: #f39c12;
+            --text-color: #333;
+            --bg-color: #f4f4f4;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: repeating-linear-gradient(
+                60deg,
+                transparent,
+                transparent 10px,
+                rgba(255,255,255,0.1) 10px,
+                rgba(255,255,255,0.1) 20px
+            );
+            animation: move-background 20s linear infinite;
+            z-index: 1;
+        }
+
+        @keyframes move-background {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        h1, h2, h3 {
+            position: relative;
+            z-index: 2;
+        }
+
+        nav {
+            background-color: var(--secondary-color);
+            padding: 10px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            transition: background-color 0.3s;
+        }
+
+        nav a:hover {
+            background-color: rgba(255,255,255,0.2);
+        }
+
+        .intro {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+
+        .timeline {
+            position: relative;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 2px;
+            height: 100%;
+            background-color: var(--primary-color);
+        }
+
+        .event {
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .event:nth-child(odd) {
+            margin-right: 50%;
+            padding-right: 30px;
+        }
+
+        .event:nth-child(even) {
+            margin-left: 50%;
+            padding-left: 30px;
+        }
+
+        .event::before {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: var(--secondary-color);
+            border-radius: 50%;
+            top: 0;
+        }
+
+        .event:nth-child(odd)::before {
+            right: -10px;
+        }
+
+        .event:nth-child(even)::before {
+            left: -10px;
+        }
+
+        .event-content {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .event-image {
+            position: relative;
+            display: inline-block;
+            overflow: hidden;
+            border-radius: 10px;
+        }
+
+        .event-image img {
+            width: 100%;
+            height: auto;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .event-image::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+            z-index: 1;
+        }
+
+        .event-image:hover img {
+            transform: scale(1.1);
+        }
+
+        .video-container {
+            position: relative;
+            width: 100%;
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 20px 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .video-container video {
+            width: 100%;
+            border-radius: 10px;
+            display: block;
+        }
+
+        video::-webkit-media-controls-panel {
+            background-color: rgba(74, 144, 226, 0.7);
+        }
+
+        video::-webkit-media-controls-play-button {
+            background-color: rgba(243, 156, 18, 0.8);
+            border-radius: 50%;
+        }
+
+        .event-image .event-caption {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-align: center;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+            z-index: 2;
+        }
+
+        .event-image:hover .event-caption {
+            opacity: 1;
+        }
+
+        .caption {
+            font-style: italic;
+            color: #666;
+            margin-top: 10px;
+        }
+
+        .mood-indicator {
+            display: inline-block;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8em;
+            margin-top: 10px;
+        }
+
+        .mood-excited { background-color: #ff9ff3; }
+        .mood-focused { background-color: #54a0ff; }
+        .mood-festive { background-color: #ff6b6b; }
+        .mood-competitive { background-color: #5f27cd; }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: var(--primary-color);
+            color: white;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>College Day Celebration 2024</h1>
+            <p>September 27, 2024 - A day of academic excellence, creativity, and campus spirit!</p>
+        </div>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#intro">Introduction</a></li>
+            <li><a href="#timeline">Event Timeline</a></li>
+            <li><a href="#reflection">Closing Remarks</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+        <section id="intro" class="intro">
+            <h2>Welcome to College Day 2024</h2>
+            <p>Join us for an exciting day of celebrations at the ACT Cyber Tower! From academic competitions to talent showcases, this day promises to be a memorable experience for all students and faculty members.</p>
+        </section>
+
+        <section id="timeline" class="timeline">
+            <div class="event">
+                <div class="event-content">
+                    <h3>8:00 AM - Opening Ceremony</h3>
+                    <div class="event-image">
+                        <img src="first.jpg" alt="Opening ceremony at ACT Cyber Tower">
+                    </div>
+                    <p>The College Day kicks off at the 3rd floor of ACT Cyber Tower. Get ready for an exciting day ahead!</p>
+                    <p class="caption">Students and faculty gathering for the opening ceremony.</p>
+                    <span class="mood-indicator mood-excited">Mood: Excited anticipation</span>
+                </div>
+            </div>
+
+            <div class="event">
+                <div class="event-content">
+                    <h3>9:00 AM - Academic Competitions</h3>
+                    <div class="event-image">
+                        <img src="la.jpg" alt="Students participating in academic competitions">
+                       
+                    </div>
+                    <p>Morning session features various academic competitions. Show off your knowledge and skills!</p>
+                    <p class="caption">Intense concentration as students tackle challenging questions.</p>
+                    <span class="mood-indicator mood-focused">Mood: Focused and determined</span>
+                </div>
+            </div>
+
+            <div class="event">
+                <div class="event-content">
+                    <h3>1:00 PM - Awarding Ceremony</h3>
+                    <div class="event-image">
+                        <img src="awarding.jpg" alt="Awarding ceremony for academic competitions">
+                       
+                    </div>
+                    <p>Winners of the academic competitions are awarded. Dean's List students are recognized.</p>
+                    <p class="caption">Proud moments as achievements are celebrated.</p>
+                    <span class="mood-indicator mood-festive">Mood: Celebratory and proud</span>
+                </div>
+            </div>
+
+            <div class="event">
+                <div class="event-content">
+                    <h3>3:00 PM - Bingo Bonanza & Quiz Bowl</h3>
+                    <div class="event-image">
+                        <img src="bingo.jpg" alt="Students playing bingo and participating in quiz bowl">
+                       
+                    </div>
+                    <p>Afternoon fun begins with Bingo Bonanza, followed by the exciting Intercollegiate Quiz Bowl.</p>
+                    <p class="caption">The auditorium buzzes with excitement as numbers are called and questions are answered.</p>
+                    <span class="mood-indicator mood-competitive">Mood: Competitive spirit</span>
+                </div>
+            </div>
+
+            <div class="event">
+                <div class="event-content">
+                    <h3>5:00 PM - Intercollegiate Revue</h3>
+                    <div class="video-container">
+                        <video controls preload="metadata" poster="video.mp4">
+                            <source src="video.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    <p>La Poroza 2024 and Campus Icon showcase the incredible talents of the students.</p>
+                    <p class="caption">Dazzling performances light up the stage.</p>
+                    <span class="mood-indicator mood-festive">Mood: Entertained and amazed</span>
+                </div>
+            </div>
+
+            <div class="event">
+                <div class="event-content">
+                    <h3>7:00 PM - College Ambassador Search</h3>
+                    <div class="event-image">
+                        <img src="mis and mr.jpg" alt="Contestants for College Ambassador">
+                      
+                    </div>
+                    <p>The day concludes with the search for the Ultimate College Ambassador and Ambassadress.</p>
+                    <p class="caption">Poise, intelligence, and campus spirit on full display.</p>
+                    <span class="mood-indicator mood-excited">Mood: Anticipation and admiration</span>
+                </div>
+            </div>
+        </section>
+
+        <section id="reflection" class="intro">
+            <h2>Closing Remarks</h2>
+            <p>As the College Day 2024 comes to an end,the administration reflect on the incredible display of talent, intelligence, and camaraderie shown by the students. This day not only celebrates our academic achievements but also strengthens the bonds within our college community. We look forward to many more successful events in the future!</p>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 College Day Celebration. Created by Me and my team Ai .</p>
+    </footer>
+</body>
+</html>
